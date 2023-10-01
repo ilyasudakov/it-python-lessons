@@ -15,6 +15,7 @@ for _, row in data.iterrows():
             "model": "patients.Patient",
             "pk": int(row["id"]),
             "fields": {
+                # "age": pd.to_datetime(row["age"], unit="d").strftime("%Y-%m-%d"),
                 "age": int(row["age"]),
                 "gender": int(row["gender"]),
                 "height": int(row["height"]),

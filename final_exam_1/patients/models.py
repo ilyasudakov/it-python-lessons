@@ -17,3 +17,8 @@ class Patient(models.Model):
     alco = models.BooleanField()
     active = models.BooleanField()
     cardio = models.BooleanField()
+
+    @property
+    def bmi(self):
+        _height = self.height / 100
+        return int(self.weight / (_height * _height))

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient details</title>
+    <style>
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #dddddd;
+            border-collapse: collapse; 
+        }
+        table th {
+            font-weight: bold;
+            padding: 5px;
+            background: #efefef;
+            border: 1px solid #dddddd;
+        }
+        table td {
+            border: 1px solid #dddddd;
+            padding: 5px;
+        }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex; align-items: center; gap: 1rem">
+    <h1>Patient details
+      </h1>
+      <a href="{% url 'admin:patients_patient_change' data.id %}">Edit</a>
+    </div>
+    <table>
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>BMI</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Height</th>
+              <th>Weight</th>
+              <th>Arterial pressure (High)</th>
+              <th>Arterial pressure (Low)</th>
+              <th>Cholesterol</th>
+              <th>Glucose</th>
+              <th>Smoking</th>
+              <th>Alcohol</th>
+              <th>Active</th>
+              <th>Cardio</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{ data.id }}</td>
+              <td>{{ data.bmi }}</td>
+              <td>{{ data.age }}</td>
+              <td>{{ data.gender }}</td>
+              <td>{{ data.height }}</td>
+              <td>{{ data.weight }}</td>
+              <td>{{ data.ap_hi }}</td>
+              <td>{{ data.ap_lo }}</td>
+              <td>{{ data.cholesterol }}</td>
+              <td>{{ data.gluc }}</td>
+              <td>{{ data.smoke }}</td>
+              <td>{{ data.alco }}</td>
+              <td>{{ data.active }}</td>
+              <td>{{ data.cardio }}</td>
+          </tr>
+      </tbody>
+  </table>
+  <a href="{% url 'patients' %}">Back to all patients</a>
+  </body>
+</html>

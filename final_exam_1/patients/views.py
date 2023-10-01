@@ -1,6 +1,18 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Patient
+from django.db import models
 
-# Create your views here.
+
 def patients(request):
-    return HttpResponse('Hellow world!!!')
+    data = Patient.objects.all()
+    return render(request, "table_view.html", {"data": data})
+
+
+def patients_graphs(request):
+    data = Patient.objects.all()
+    return render(request, "graph_view.html", {"data": data})
+
+
+def patient_details(request, id):
+    data = Patient.objects.get(id=id)
+    return render(request, "detail_view.html", {"data": data})

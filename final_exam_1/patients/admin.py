@@ -6,6 +6,7 @@ from .models import Patient
 class PatientModel(admin.ModelAdmin):
     list_display = ["id", "age"]
 
+    readonly_fields = ["id"]
     fields = [
         "age",
         "gender",
