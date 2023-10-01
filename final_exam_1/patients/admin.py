@@ -1,3 +1,22 @@
 from django.contrib import admin
+from .models import Patient
 
-# Register your models here.
+
+@admin.register(Patient)
+class PatientModel(admin.ModelAdmin):
+    list_display = ["id", "age"]
+
+    fields = [
+        "age",
+        "gender",
+        "height",
+        "weight",
+        "ap_hi",
+        "ap_lo",
+        "cholesterol",
+        "gluc",
+        "smoke",
+        "alco",
+        "active",
+        "cardio",
+    ]
