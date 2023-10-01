@@ -1,4 +1,5 @@
 def calculate_bmi(weight, height):
+    "Calculates BMI for a given weight and height"
     try:
         weight = float(weight)
         height = float(height)
