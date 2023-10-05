@@ -10,7 +10,10 @@ def patients(request):
 
 def patients_graphs(request):
     data = Patient.objects.all()
-    return render(request, "graph_view.html", {"data": data})
+
+    labels = ["Normal BMI", "Overweight"]
+
+    return render(request, "graph_view.html", {"data": data, "labels": labels})
 
 
 def patient_details(request, id):

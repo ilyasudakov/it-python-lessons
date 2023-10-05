@@ -1,13 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Graphs for Patients data</title>
-  </head>
-  <body>
-    <h1>Graphs for Patients data
-      </h1>
-  <a href="{% url 'patients' %}">List of all patients</a>
-  </body>
-</html>
+{% extends "graph_base.html" %}
+
+{% block content %}
+<h1>Graphs for Patients data</h1>
+    <a href="{% url 'patients' %}">List of all patients</a>
+    <canvas id="columnChart"></canvas>
+
+    <script>
+        var ctx = document.getElementById('columnChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels|safe }},
+                datasets: [
+                    {
+                        label: 'Height',
+                        data: [{%for item in data%}{{item.height|safe}}{%endfor%}],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Age',
+                        data: [{%for item in data%}{{item.age|safe}}{%endfor%}],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+{% endblock content %}
+
+
