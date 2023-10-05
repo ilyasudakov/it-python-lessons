@@ -12,4 +12,5 @@ class PatientDetailsPage:
         self.page.goto(f"{self.url}/8")
 
     def edit_patient(self):
+        """Click on the Edit button. Redirects to the /admin/patients/:id"""
         self.edit_patient_button.click()
